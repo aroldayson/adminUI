@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5"  id="print-section">
+<!-- <div class="container mt-5 mb-5"  id="print-section">
   <div class="receipt-main" >
     <div class="receipt-header" >
       <div class="loader-container" *ngIf="isLoading">
@@ -31,7 +31,6 @@
         <h3> {{ trackingnumber }}</h3>
       </div>
     </div>
-    <!-- } -->
     <h2>Transaction</h2>
     <table class="table table-bordered" >
       <thead>
@@ -53,56 +52,6 @@
           <td class="text-right">{{c.Price | currency: ' ':'symbol'}}</td>
         </tr>
         }
-        <!-- <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="text-right">
-            <p><strong>Total Amount: </strong></p>
-            <p><strong>Amount Received: </strong></p>
-            <p><strong>Additional Services: </strong></p>
-            <p><strong>Change: </strong></p>
-            <p><strong>Balance: </strong></p>
-          </td>
-          <td>
-              <div class="transaction-item text-right">
-                <p>
-                    {{ totalpayment | currency: ' ':'symbol'}}
-                </p>
-                <p>
-                    {{ payment ?? 0 | currency: ' ':'symbol'}}
-                </p>       
-                <p>
-                    {{ addservices ?? 0 | currency: ' ':'symbol'}}
-                </p>           
-                <p> 
-                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment) > 0 ? (payment - totalpayment) : 0) : 0 | currency: ' ' : 'symbol'  }}
-                </p>
-                <p class="text-danger">
-                  {{ (payment - totalpayment - addservices) < 0 ? (0 - (payment - totalpayment - addservices)) : 0 | currency: ' ' : 'symbol' }}
-              </p>
-              </div>          
-          </td>
-          
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="text-right">
-            <h2><strong>OverAll Total: </strong></h2>
-          </td>
-          
-            <td class="text-right">
-              <h2>
-                <strong>
-                  {{ totalamount | currency: ' ' : 'symbol' }}
-                </strong>
-              </h2>
-            </td>
-        </tr> -->
       </tbody>
     </table>
     <h2>Additional Service</h2>
@@ -138,7 +87,6 @@
             <p><strong>Additional Services: </strong></p>
             <p><strong>Amount Received: </strong></p>
             <p><strong>Change: </strong></p>
-            <!-- <p><strong>Shipping fee: </strong></p> -->
             <p><strong>Balance: </strong></p>
           </td>
           <td>
@@ -155,9 +103,6 @@
                 <p> 
                   {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
                 </p>
-                <!-- <p> 
-                  {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
-                </p> -->
                 <p class="text-danger">
                   {{ (payment - totalpayment - addservices) < 0 ? (0 - (payment - totalpayment - addservices)) : 0 | currency: ' ' : 'symbol' }}
               </p>
@@ -200,6 +145,174 @@
         <button class="end btn btn-success" [useExistingCss]="true"
         printSectionId="print-section"
         ngxPrint>Print</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="row d-flex justify-content-center align-items-start h-100 mt-3 p-3">
+  <div class="col-lg-9 col-md-12">
+    <div class="card shadow-lg" style="border-radius: 15px; background-color: #f9f9f9;">
+      <div class="card-body p-4">
+      <div class="row mb-4">
+        <div class="col-sm-6">
+          <h4 class="font-size-16">
+            <i class="fas fa-user me-2 icon-style"></i>Billed To:
+          </h4>
+          <h5><strong>Customer Name:</strong> {{cust.Cust_fname}} {{cust.Cust_mname}} {{cust.Cust_lname}}</h5>
+          <!-- <p class="text-muted mb-1">
+            <i class="fas fa-home me-2 icon-style"></i>{{cust.Cust_address}}
+          </p> -->
+          <h5 class="text-muted mb-1">
+            <i class="fas fa-envelope me-2 icon-style"></i>{{cust.Cust_email}}
+          </h5>
+          <h5 class="text-muted">
+            <i class="fas fa-phone me-2 icon-style"></i>{{cust.Cust_phoneno}}
+          </h5>
+        </div>
+        <div class="col-sm-6 text-sm-end">
+          <h5><strong>Invoice No:</strong> {{ trackingnumber }}</h5>
+          <h5><strong>Order Date:</strong> <i class="fas fa-calendar-alt me-1 icon-style"></i>{{Transac_datetime | date:'MM/dd/yyyy'}}</h5>
+          <h5><strong>Estimated Date:</strong> <i class="fas fa-calendar-check me-1 icon-style"></i>{{estimated_date | date:'MM/dd/yyyy'}}</h5>
+        </div>
+      </div>
+
+      <div class="py-2 mt-1">
+        <h5 class="font-size-16 mb-1">
+          <i class="fas fa-list-alt me-2 icon-style"></i>Service Summary
+        </h5>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="table-light">
+              <tr>
+                <th>No.</th>
+                <th>Service</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th class="text-end">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(c of histo; track c.Categ_ID){
+              <tr>
+                <th scope="row">1</th>
+                <td>
+                  <h6 class="mb-0">
+                    <i class="fas fa-tshirt me-2 icon-style"></i>{{c.Categories || 'N/A'}}
+                  </h6>
+                  <!-- <small class="text-muted">Standard washing service</small> -->
+                </td>
+                <td><b> Qty:</b> {{c.Qty}} | <b>Weight:</b>{{c.Weight}}<b>kg</b></td>
+                <td class="text-right"> {{c.Price | currency: ' ':'symbol'}}</td>
+                <td class="text-end"></td>
+              </tr>
+            }
+              <tr class="table-light">
+                <td colspan="4" class="text-end fw-bold">Sub Total</td>
+                <td class="text-end fw-bold">{{totalpayment}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="py-2 mt-1">
+        <h5 class="font-size-16 mb-1">
+          <i class="fas fa-plus-circle me-2 icon-style"></i>Additional Charges
+        </h5>
+        <div class="table-responsive">
+          <table class="table ">
+            <thead class="table-light">
+              <tr>
+                <th>No.</th>
+                <th>Service</th>
+                <th>Address</th>
+                <th>Price</th>
+                <th class="text-end">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(s of service; track s.AddService_ID){
+              <tr>
+                <th scope="row">1</th>
+                <td>
+                  <i class="fas fa-truck-fast me-2 icon-style"></i>{{s.AddService_name}}
+                </td>
+                <td >
+                  <span>Olongapo</span>
+                </td>
+                <td>{{s.AddService_price | currency: ' ':'symbol'}}</td>
+                <td class="text-end"></td>
+              </tr>
+              }
+              <tr class="table-light">
+                <td colspan="4" class="text-end fw-bold">Sub Total</td>
+                <td class="text-end fw-bold">{{addservices}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="py-2">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr class="table-primary">
+                <td colspan="4" class="text-end fw-bold">
+                  <i class="fas fa-wallet me-2 icon-style"></i>Grand Total
+                </td>
+                <td class="text-end fw-bold">
+                  <h4 class="fw-semibold">{{totalpayment + addservices | currency:' ':'symbol'}}</h4>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-end">Amount Received:</td>
+                <td class="text-end">
+                  <h4>
+                    {{ payment ?? 0 | currency: ' ':'symbol'}}
+                  </h4>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-end">Change:</td>
+                <td class="text-end">
+                  <h4>
+                    {{ (payment != null && totalpayment != null) ? ((payment - totalpayment - addservices) > 0 ? (payment - totalpayment - addservices) : 0) : 0 | currency: ' ' : 'symbol'  }}
+                  </h4>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-end">Balance:</td>
+                <td class="text-end text-danger">
+                  <h4>
+                    {{ ((payment - totalpayment) - addservices) < 0 
+                      ? (0 - ((payment - totalpayment) - addservices)) 
+                      : 0 | currency:'':'symbol':'1.2-2' }}
+                  </h4>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="d-print-none mt-4 text-end">
+        <button class="btn btn-success" onclick="window.print()">
+          <i class="fas fa-print me-1 icon-style"></i> Print
+        </button>
+        <button
+          class="end btn btn-primary mx-2"
+          routerLink="/main/customertpage/main/view-history"
+        >
+          Back
+        </button>
+        <!-- <button class="btn btn-primary">
+          <i class="fas fa-envelope me-1 icon-style"></i> Email
+        </button> -->
+      </div>
+      </div>
+
+      <div class="card-footer border-0 px-3 py-3"
+        style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; background-color: #4e73df; color: white;">
       </div>
     </div>
   </div>

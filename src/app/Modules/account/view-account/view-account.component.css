@@ -1,4 +1,4 @@
-/* General Styles */
+/* 
 .account-section {
   padding: 20px;
   border: 1px solid #ddd;
@@ -16,7 +16,7 @@
   transform: translateY(-5px);
 }
 
-/* Image Styling */
+
 .preview-img {
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,6 @@
   margin-bottom: 20px;
 }
 
-/* Clickable image overlay */
 .file-input {
   position: absolute;
   top: 0;
@@ -37,7 +36,6 @@
   cursor: pointer;
 }
 
-/* Form Group Styling */
 .form-group {
   margin-bottom: 20px;
 }
@@ -60,27 +58,25 @@
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
 }
 
-/* Error message for form validation */
 .invalid-feedback {
   color: crimson;
   font-size: 13px;
 }
 
-/* Eye icon alignment */
 .form-group.position-relative {
   position: relative;
 }
 
 .form-group i.fa {
   position: absolute;
-  top: 70%; /* Vertically centers the icon */
-  right: 10px; /* Positions the icon on the right side */
-  transform: translateY(-50%); /* Adjusts vertical centering */
+  top: 70%; 
+  right: 10px; 
+  transform: translateY(-50%); 
   cursor: pointer;
   color: #666;
 }
 
-/* Button Styles */
+
 .btn {
   border-radius: 4px;
   padding: 10px 20px;
@@ -109,7 +105,7 @@
   transform: scale(1.02);
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 992px) {
   .account-section {
     margin-bottom: 15px;
@@ -126,4 +122,179 @@
     padding: 8px;
     font-size: 14px;
   }
+} */
+.img-account-profile {
+  width: 100%;
+  max-width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+.card {
+  border-radius: 8px;
+  border: none;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+
+.card-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  background-color: #5988e2;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  border: 1px solid #c5ccd6;
+  border-radius: 0.35rem;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.password-toggle-icon:hover {
+  color: #476bb3;
+}
+
+.profile-button {
+  background-color: #5988e2;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-button:hover {
+  background-color: #3d61a4;
+}
+
+.update-button {
+  background: #5988e2;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.update-button:hover {
+  background-color: #3d61a4;
+}
+/* Footer Styling */
+.footer {
+  background-color: #1c1c1c; /* Dark background for a modern look */
+  color: #fff; /* White text for contrast */
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #5988e2; /* Accent color */
+  margin-bottom: 10px;
+}
+
+.footer-logo p {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 0;
+}
+
+.footer-contact, .footer-location {
+  text-align: left;
+}
+
+.footer-contact h3, .footer-location h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #5988e2; /* Accent color */
+}
+
+.footer-contact p, .footer-location p {
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.footer-contact p i, .footer-location a i {
+  color: #5988e2;
+  margin-right: 8px;
+}
+
+.footer-location a {
+  text-decoration: none;
+  color: #5988e2;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-location a:hover {
+  color: #fff;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  width: 100%;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-contact, .footer-location {
+    text-align: center;
+  }
+}
+.styled-heading {
+  margin: auto;
+  color: #ffbb33;
+  letter-spacing: .4em;
+  font-size: 3em;
+  text-shadow: 0 1px #5998e2, -1px 0 #307ed8, -1px 2px #5998e2, -2px 1px #307ed8,
+    -2px 3px #5998e2, -3px 2px #307ed8, -3px 4px #5998e2, -4px 3px #307ed8,
+    -4px 5px #5998e2, -5px 4px #307ed8, -5px 6px #5998e2, -6px 5px #307ed8,
+    -6px 7px #5998e2, -7px 6px #307ed8, -7px 8px #5998e2, -8px 7px #307ed8;
+  text-align: center;
+}
+
+.laundry-icon {
+  color: #ffbb33; /* Matching the heading text color */
+  font-size: 1em; /* Slightly larger icons */
+  margin: 0 0.2em; /* Space between the icons and the heading */
 }

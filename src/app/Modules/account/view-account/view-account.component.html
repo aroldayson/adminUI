@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <div class="row">
     <div class="col-md-12 col-lg-6 mb-4">
       <div class="account-section">
@@ -144,4 +144,165 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<form [formGroup]="updateaccount" (ngSubmit)="update()">
+  <div class="container-xl px-4 mt-4">
+    <div class="row mb-3 mt-3">
+      <div class="col-12">
+        <h3 class="text-center styled-heading">
+          <i class="fas fa-user laundry-icon"></i>
+          My Account
+          <i class="fas fa-washing-machine laundry-icon"></i> <!-- Washing Machine Icon -->
+        </h3>
+      </div>
+    </div>
+    <!-- Profile Section -->
+    <div class="row">
+      <!-- Profile Picture Section -->
+      <div class="col-xl-4 col-lg-5 col-md-12 mb-4">
+        <div class="card shadow">
+          <div class="card-header">Profile Picture</div>
+          <div class="card-body text-center">
+            <!-- Profile Image -->
+            <img 
+              class="img-account-profile rounded-circle mb-2" 
+              [src]="previewUrl || ('http://192.168.3.85:8000/images/')"
+              alt="Customer image">
+           
+
+                <div>
+                 <p>{{ users?.Admin_lname }} {{ users?.Admin_fname }}{{ users?.Admin_mname }}</p>
+                 <p>{{ users?.Email }}</p>
+                 <p>Jeca, Artacho, Sison Pangsinan</p>
+                </div>
+              
+
+            <!-- Hidden File Input -->
+            <input 
+              type="file" 
+              id="fileInput" 
+              (change)="onFileSelected($event)" 
+              accept="image/*" 
+              formControlName="Cust_image" 
+              style="display: none;">
+
+              <!-- Instructions -->
+              <div class="small font-italic text-muted mt-2">JPG or PNG no larger than 5 MB</div>
+
+            <!-- Upload Button -->
+            <button 
+              class="btn btn-primary profile-button mt-3 mx-auto" 
+              type="button" 
+              >
+              <i class="fas fa-camera"></i> Upload New Image
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Details Section -->
+      <div class="col-xl-8 col-lg-7 col-md-12">
+        <div class="card mb-4">
+          <div class="card-header">Account Details</div>
+          <div class="card-body">
+            <!-- Name Fields -->
+            <div class="row gx-3 mb-3">
+              <div class="col-md-6">
+                <label class="small mb-1" for="lname">Last Name</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="lname" 
+                  formControlName="Admin_lname" 
+                  readonly>
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="fname">First Name</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="fname" 
+                  formControlName="Admin_fname" 
+                  readonly>
+              </div>
+            </div>
+
+            <!-- Middle Name and Phone Number -->
+            <div class="row gx-3 mb-3">
+              <div class="col-md-6">
+                <label class="small mb-1" for="mname">Middle Name</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="mname" 
+                  formControlName="Cust_mname" 
+                  readonly>
+              </div>
+              <div class="col-md-6">
+                  <label class="small mb-1" for="phone">Phone Number</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="phone" 
+                    formControlName="Cust_phoneno"
+                    [pattern]="'^[0-9]{11}$'" 
+                    placeholder="Enter a valid Phone Number" />
+                  <!-- <div *ngIf="profileform.get('Cust_phoneno')?.hasError('pattern') && profileform.get('Cust_phoneno')?.touched" class="text-danger">
+                    Phone number must be exactly 11 digits.
+                  </div> -->
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label class="small mb-1" for="email">Email Address</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="Cust_email" 
+                readonly>
+            </div>
+
+            <!-- Password Field -->
+            <div class="row gx-3 mb-3">
+              <div class="col-md-6">
+                <label class="small mb-1" for="password">Password</label>
+                <div class="position-relative">
+                  <input 
+                    type="{{ hideNewPassword ? 'text' : 'password' }}" 
+                    class="form-control password-input" 
+                    id="password" 
+                    formControlName="Cust_password">
+                  <i 
+                    (click)="toggleConfirmPasswordVisibility()" 
+                    class="fa {{ hideNewPassword ? 'fa-eye-slash' : 'fa-eye' }} password-toggle-icon">
+                  </i>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="password">Address</label>
+                <div class="position-relative">
+                  <input 
+                    type="address" 
+                    class="form-control" 
+                    id="adress" 
+                    formControlName="Cust_address">
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- Update Button -->
+            <button 
+              type="submit" 
+              class="btn btn-primary update-button mt-3">
+              Update Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

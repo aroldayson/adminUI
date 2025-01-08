@@ -31,6 +31,8 @@ export class ViewHistorytransacComponent implements OnInit{
   addservices: any;
   service: any;
   isLoading: boolean = false;
+  estimated_date:any
+  Transac_datetime:any
 
   constructor(
     private admin: AdminService
@@ -53,6 +55,8 @@ export class ViewHistorytransacComponent implements OnInit{
         this.addservices = result.addprice;
         this.balance = result.data[0].balanceAmount; 
         this.service = result.servicedata;
+        this.estimated_date = result.data[0].estimated_date; 
+        this.Transac_datetime = result.data[0].Transac_datetime; 
         console.log( this.histo,this.payment,this.totalpayment,this.trackingnumber );
       }
     );

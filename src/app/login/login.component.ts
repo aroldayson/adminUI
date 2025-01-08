@@ -26,11 +26,22 @@ import { resourceUsage } from 'node:process';
 })
 export class LoginComponent implements OnInit {
   showPassword: boolean = true;
+  load: boolean = false;
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.simulateLoading();
+  }
+
+  simulateLoading() {
+    this.load = true;
+    setTimeout(() => {
+      this.load = false;
+    }, 3000);
+  }
+
 
   constructor(private admin: AdminService, private router: Router) {}
 
@@ -40,6 +51,8 @@ export class LoginComponent implements OnInit {
   });
 
   login() {
+    // this.load = true;
+    this.simulateLoading();
     if (this.loginform.valid) {
       this.admin.logins(this.loginform.value).subscribe(
         (result: any) => {
@@ -52,7 +65,7 @@ export class LoginComponent implements OnInit {
               timerProgressBar: true,
               showConfirmButton: false,
             });
-
+            this.load = false;
             localStorage.setItem('Account_ID', result.user.Admin_ID);
             localStorage.setItem('token', result.token);
             this.router.navigate(['/main']);
@@ -61,8 +74,11 @@ export class LoginComponent implements OnInit {
               icon: 'error',
               title: 'Login Failed',
               text: 'Login was unsuccessful. Please try again.',
-              showConfirmButton: true,
+              timer: 2000,
+              timerProgressBar: true,
+              showConfirmButton: false,
             });
+            this.load = false;
           }
           console.log(result);
         },
@@ -71,7 +87,9 @@ export class LoginComponent implements OnInit {
             icon: 'error',
             title: 'Login Failed',
             text: 'Please check your email and password.',
-            showConfirmButton: true,
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false,
           });
           console.error('Login error:', error);
         }
@@ -86,4 +104,6 @@ export class LoginComponent implements OnInit {
       console.log('Form is not valid');
     }
   }
+
+
 }
